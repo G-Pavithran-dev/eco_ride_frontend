@@ -63,7 +63,7 @@ const PilotsRideHistory = () => {
   const getall = () => {
     console.log('hello')
     axios
-      .get(`http://3.89.57.212:8080/app/bookride/Driver/${logindata.email}`)
+      .get(`http://localhost:8080/app/bookride/Driver/${logindata.email}`)
       .then((res) => {
         console.log('jdjdj', res.data)
         setDriverRides(res.data)
@@ -73,7 +73,7 @@ const PilotsRideHistory = () => {
       })
     axios
       .get(
-        `http://3.89.57.212:8080/app/userRideHistory/getDriverByemail/${logindata.email}/upcoming`
+        `http://localhost:8080/app/userRideHistory/getDriverByemail/${logindata.email}/upcoming`
       )
       .then((res) => {
         console.log('Drivers history upcominPassengers', res.data)
@@ -84,7 +84,7 @@ const PilotsRideHistory = () => {
       })
     axios
       .get(
-        `http://3.89.57.212:8080/app/userRideHistory/getDriverByemail/${logindata.email}/ongoing`
+        `http://localhost:8080/app/userRideHistory/getDriverByemail/${logindata.email}/ongoing`
       )
       .then((res) => {
         setOnGoingRideHistory(res.data)
@@ -95,14 +95,11 @@ const PilotsRideHistory = () => {
 
     axios
       .get(
-        `http://3.89.57.212:8080/app/userRideHistory/getAllRideID/completed/${logindata.email}`
+        `http://localhost:8080/app/userRideHistory/getAllRideID/completed/${logindata.email}`
       )
       .then((res) => {
         axios
-          .post(
-            `http://3.89.57.212:8080/app/bookRide/getALLRide/Byid`,
-            res.data
-          )
+          .post(`http://localhost:8080/app/bookRide/getALLRide/Byid`, res.data)
           .then((response) => {
             console.log('rwstyaujklskdjhgeeyujhneduj', response.data)
             setCompletedRideHistory(response.data)
@@ -477,7 +474,7 @@ const PilotsRideHistory = () => {
                             onClick={() => {
                               axios
                                 .put(
-                                  `http://3.89.57.212:8080/app/updateRide/ById/${DriverRides[0].id}/completed`
+                                  `http://localhost:8080/app/updateRide/ById/${DriverRides[0].id}/completed`
                                 )
                                 .then(() => {
                                   getall()
@@ -678,7 +675,7 @@ const PilotsRideHistory = () => {
                             onClick={() => {
                               axios
                                 .put(
-                                  `http://3.89.57.212:8080/app/updateRide/ById/${DriverRides[0].id}/ongoing`
+                                  `http://localhost:8080/app/updateRide/ById/${DriverRides[0].id}/ongoing`
                                 )
                                 .then(() => {
                                   getall()

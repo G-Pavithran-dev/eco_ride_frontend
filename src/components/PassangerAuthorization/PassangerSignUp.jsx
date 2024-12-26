@@ -87,7 +87,7 @@ export default function PassangerSignUp() {
     }
     console.log(formValues)
     await axios
-      .post('http://3.89.57.212:8080/signup', data)
+      .post('http://localhost:8080/signup', data)
       .then((Response) => {
         if (Response.status === 201) {
           console.log(Response)
@@ -104,7 +104,7 @@ export default function PassangerSignUp() {
   const handleOtpVerification = async (event) => {
     event.preventDefault()
     axios
-      .get(`http://3.89.57.212:8080/verify/${otp}`)
+      .get(`http://localhost:8080/verify/${otp}`)
       .then((Response) => {
         if (Response.status === 202) {
           setopen(false)
