@@ -38,7 +38,7 @@ export default function PassangerSignIn() {
   const handleSubmit = (e) => {
     e.preventDefault()
     axios
-      .get('http://3.89.57.212:8080/api/ecoride/login', {
+      .get('https://3.89.57.212:8080/api/ecoride/login', {
         params: {
           email: email,
           password: password,
