@@ -73,33 +73,35 @@ const BookRide = () => {
   const [opendilog, setOpendilog] = useState(false)
   const nav = useNavigate()
   const f = () => {
-    axios.get('http://localhost:8080/app/bookride/getallrides').then((res) => {
-      console.log('all rides are from book ride ', res.data)
-      const updatedRidesData = res.data.map((ride) => {
-        const distance = haversine(
-          ride.leavingFromLatitude,
-          ride.leavingFromLongitude,
-          passLatitude,
-          passLongitude
-        )
-        console.log(`The distance is ${distance.toFixed(2)} km`)
-        console.log(
-          ride.leavingFromLatitude,
-          ride.leavingFromLongitude,
-          passLatitude,
-          passLongitude
-        )
+    axios
+      .get('http://3.89.57.212:8080/app/bookride/getallrides')
+      .then((res) => {
+        console.log('all rides are from book ride ', res.data)
+        const updatedRidesData = res.data.map((ride) => {
+          const distance = haversine(
+            ride.leavingFromLatitude,
+            ride.leavingFromLongitude,
+            passLatitude,
+            passLongitude
+          )
+          console.log(`The distance is ${distance.toFixed(2)} km`)
+          console.log(
+            ride.leavingFromLatitude,
+            ride.leavingFromLongitude,
+            passLatitude,
+            passLongitude
+          )
 
-        return {
-          ...ride,
-          distance: distance.toFixed(2), // Update the distance property
-        }
+          return {
+            ...ride,
+            distance: distance.toFixed(2), // Update the distance property
+          }
+        })
+        console.log(updatedRidesData)
+        setRideData(updatedRidesData)
+        setAllRideData(updatedRidesData)
+        dispatch(setIdselected(1))
       })
-      console.log(updatedRidesData)
-      setRideData(updatedRidesData)
-      setAllRideData(updatedRidesData)
-      dispatch(setIdselected(1))
-    })
   }
   const [rideData, setRideData] = useState([
     {
@@ -227,7 +229,7 @@ const BookRide = () => {
     } else {
       axios
         .put(
-          `http://localhost:8080/app/bookride/updateRideCompletionStatus/${selectedRideData.id}`
+          `http://3.89.57.212:8080/app/bookride/updateRideCompletionStatus/${selectedRideData.id}`
         )
         .then()
         .catch((err) => {
@@ -235,7 +237,7 @@ const BookRide = () => {
         })
       axios
         .post(
-          `http://localhost:8080/app/userRideHistory/${logindata.email}/${selectedRideData.id}`
+          `http://3.89.57.212:8080/app/userRideHistory/${logindata.email}/${selectedRideData.id}`
         )
         .then((response) => {
           console.log(response)
@@ -287,7 +289,7 @@ const BookRide = () => {
     try {
       if (leavingFromFilters.length == 0 && goingToFilters.length == 0) {
       } else {
-        const res = axios.post('http://localhost:8080/app/bookride/filter', [
+        const res = axios.post('http://3.89.57.212:8080/app/bookride/filter', [
           leavingFromFilters,
           goingToFilters,
         ])
@@ -329,7 +331,7 @@ const BookRide = () => {
     console.log('the store selected id is ', selectedid.idSelected)
     try {
       const response = axios.get(
-        `http://localhost:8080/app/bookride/selectedValue/${selectedid.idSelected}`
+        `http://3.89.57.212:8080/app/bookride/selectedValue/${selectedid.idSelected}`
       )
       response.then((res) => {
         console.log(res.data)

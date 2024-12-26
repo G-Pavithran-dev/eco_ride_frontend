@@ -77,7 +77,7 @@ const RideCard = () => {
         endTime,
       }
       axios
-        .post('http://localhost:8080/app/createride', rideDetails)
+        .post('http://3.89.57.212:8080/app/createride', rideDetails)
         .then((response) => {
           setStatus('success')
 
