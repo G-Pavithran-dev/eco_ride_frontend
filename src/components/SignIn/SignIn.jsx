@@ -42,7 +42,7 @@ export default function SignInSide() {
       password: data.get('password'),
     })
     axios
-      .get('https://3.89.57.212:8080/api/ecoride/login', {
+      .get('http://3.89.57.212:8080/api/ecoride/login', {
         params: {
           email: data.get('email'),
           password: data.get('password'),

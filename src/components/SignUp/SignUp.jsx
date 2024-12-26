@@ -140,7 +140,7 @@ export default function SignUp() {
     console.log(formValues)
 
     await axios
-      .post('https://3.89.57.212:8080/signup', data)
+      .post('http://3.89.57.212:8080/signup', data)
       .then((Response) => {
         console.log(Response.status)
         if (Response.status === 201) {
@@ -215,7 +215,7 @@ export default function SignUp() {
   const handleOtpVerification = async (event) => {
     event.preventDefault()
     axios
-      .get(`https://3.89.57.212:8080/verify/${otp}`)
+      .get(`http://3.89.57.212:8080/verify/${otp}`)
       .then((Response) => {
         if (Response.status === 202) {
           setopen(false)
