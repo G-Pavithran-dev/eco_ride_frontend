@@ -135,7 +135,7 @@ const RideCard = () => {
       console.log('Ride details are ', rideDetails)
       console.log('Ride details are ', rideDetails)
       axios
-        .post('https://3.89.57.212:8443/app/createride', rideDetails)
+        .post('https://localhost:8082/app/createride', rideDetails)
         .then((response) => {
           setStatus('success')
 

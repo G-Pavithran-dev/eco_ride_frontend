@@ -34,7 +34,7 @@ const PublishedRideHistory = () => {
     console.log('login data email is ', logindata.email)
     axios
       .get(
-        `https://3.89.57.212:8443/app/userRideHistory/getByUser/${logindata.email}/upcoming`
+        `https://localhost:8082/app/userRideHistory/getByUser/${logindata.email}/upcoming`
       )
       .then((res) => {
         setUpcomingRideHistory(res.data)
@@ -44,7 +44,7 @@ const PublishedRideHistory = () => {
       })
     axios
       .get(
-        `https://3.89.57.212:8443/app/userRideHistory/getByUser/${logindata.email}/ongoing`
+        `https://localhost:8082/app/userRideHistory/getByUser/${logindata.email}/ongoing`
       )
       .then((res) => {
         setOnGoingRideHistory(res.data)
@@ -54,7 +54,7 @@ const PublishedRideHistory = () => {
       })
     axios
       .get(
-        `https://3.89.57.212:8443/app/userRideHistory/getByUser/${logindata.email}/completed`
+        `https://localhost:8082/app/userRideHistory/getByUser/${logindata.email}/completed`
       )
       .then((res) => {
         setCompletedRideHistory(res.data)
@@ -391,7 +391,7 @@ const PublishedRideHistory = () => {
                             onClick={() => {
                               axios
                                 .delete(
-                                  `https://3.89.57.212:8443/app/deleteRide/${logindata.email}/${ride.bookRide.id}`
+                                  `https://localhost:8082/app/deleteRide/${logindata.email}/${ride.bookRide.id}`
                                 )
                                 .then(() => {
                                   getall()
@@ -403,7 +403,7 @@ const PublishedRideHistory = () => {
                           <Button
                             onClick={() => {
                               axios.put(
-                                `https://3.89.57.212:8443/app/updateRide/${logindata.email}/${ride.bookRide.id}/completed`
+                                `https://localhost:8082/app/updateRide/${logindata.email}/${ride.bookRide.id}/completed`
                               )
                             }}
                           >
@@ -563,13 +563,13 @@ const PublishedRideHistory = () => {
                             onClick={() => {
                               axios
                                 .delete(
-                                  `https://3.89.57.212:8443/app/deleteRide/${logindata.email}/${ride.bookRide.id}`
+                                  `https://localhost:8082/app/deleteRide/${logindata.email}/${ride.bookRide.id}`
                                 )
                                 .then(() => {
                                   getall()
                                 })
                               axios.put(
-                                `https://3.89.57.212:8443/app/bookride/updateseatsAvailable/onCancelation/${ride.bookRide.id}`
+                                `https://localhost:8082/app/bookride/updateseatsAvailable/onCancelation/${ride.bookRide.id}`
                               )
                             }}
                           >

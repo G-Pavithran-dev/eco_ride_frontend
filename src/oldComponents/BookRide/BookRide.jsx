@@ -40,12 +40,10 @@ const BookRide = () => {
   }, [localStorage.getItem('clickid')])
   useEffect(() => {
     localStorage.setItem('clickid', 0)
-    axios
-      .get('https://3.89.57.212:8443/app/bookride/getallrides')
-      .then((res) => {
-        console.log(res.data)
-        setRideData(res.data)
-      })
+    axios.get('https://localhost:8082/app/bookride/getallrides').then((res) => {
+      console.log(res.data)
+      setRideData(res.data)
+    })
   }, [])
   return (
     <div>
