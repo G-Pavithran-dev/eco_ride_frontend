@@ -126,7 +126,7 @@ export default function Map() {
   useEffect(() => {
     axios
       .get(
-        `http://localhost:8081/app/bookride/selectedValue/${rideId.idSelected}`
+        `https://localhost:8443/app/bookride/selectedValue/${rideId.idSelected}`
       )
       .then((response) => {
         {

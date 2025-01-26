@@ -67,7 +67,7 @@ const BookRide = () => {
   const nav = useNavigate()
 
   const f = () => {
-    axios.get('http://localhost:8081/app/bookride/getallrides').then((res) => {
+    axios.get('https://localhost:8443/app/bookride/getallrides').then((res) => {
       const updatedRidesData = res.data.map((ride) => {
         const distance = haversine(
           ride.leavingFromLatitude,
@@ -191,7 +191,7 @@ const BookRide = () => {
     } else {
       axios
         .put(
-          `http://localhost:8081/app/bookride/updateRideCompletionStatus/${selectedRideData.id}`
+          `https://localhost:8443/app/bookride/updateRideCompletionStatus/${selectedRideData.id}`
         )
         .then()
         .catch((err) => {
@@ -199,7 +199,7 @@ const BookRide = () => {
         })
       axios
         .post(
-          `http://localhost:8081/app/userRideHistory/${logindata.email}/${selectedRideData.id}`
+          `https://localhost:8443/app/userRideHistory/${logindata.email}/${selectedRideData.id}`
         )
         .then((response) => {
           console.log(response)
@@ -251,7 +251,7 @@ const BookRide = () => {
     try {
       if (leavingFromFilters.length == 0 && goingToFilters.length == 0) {
       } else {
-        const res = axios.post('http://localhost:8081/app/bookride/filter', [
+        const res = axios.post('https://localhost:8443/app/bookride/filter', [
           leavingFromFilters,
           goingToFilters,
         ])
@@ -293,7 +293,7 @@ const BookRide = () => {
     console.log('the store selected id is ', selectedid.idSelected)
     try {
       const response = axios.get(
-        `http://localhost:8081/app/bookride/selectedValue/${selectedid.idSelected}`
+        `https://localhost:8443/app/bookride/selectedValue/${selectedid.idSelected}`
       )
       response.then((res) => {
         console.log(res.data)
